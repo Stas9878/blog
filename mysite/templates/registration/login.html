@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+    <h2>Войти</h2>
+    <form method="post" >
+        {% csrf_token %}
+        {{ form.username }}
+        {{ form.password }}
+
+        <br>
+
+        <div class="mb-1">Запомнить меня {{ form.remember_me }}</div>
+        <input type="submit" class="btn btn-primary btn-lg" value="Войти">
+        <div class="dropdown">
+          <input type="submit" class="btn btn-primary btn-lg" value="Войти с помощью...">
+          <div class="dropdown-content">
+            <a href="{% url 'social:begin' 'github' %}" class="btn btn-link btn-lg active btn-block">GitHub</a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-link btn-lg active btn-block">Google</a>
+            <a href="{% url 'social:begin' 'vk-oauth2' %}" class="btn btn-link btn-lg active btn-block">VK</a>
+          </div>  
+        </div>
+        <br><br>
+
+        <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+    </form>
+    <a href="{% url 'signup'%}" class="btn btn-primary btn-lg" role="button">Регистрация</a>
+{% endblock %}
+
+<!-- <div class="dropdown">
+  <button class="dropbtn">Войти с помощью...</button>
+  <div class="dropdown-content">
+    <a href="{% url 'social:begin' 'github' %}" class="btn btn-link btn-lg active btn-block">GitHub</a>
+    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-link btn-lg active btn-block">Google</a>
+    <a href="{% url 'social:begin' 'vk-oauth2' %}" class="btn btn-link btn-lg active btn-block">VK</a>
+</div> -->

@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Рекомендация другу{% endblock %}
+
+{% block content %}
+    {% if sent %}
+        <h1>Успех!</h1>
+        <p>
+            "{{ post.title }}" был успешно отправлен
+            по адресу - {{ form.cleaned_data.to }}
+        </p>
+    {% else %}
+        <h1>Поделитесь записью - "{{ post.title }}" по электронной почте</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% if not user %}
+                {{ form.name }}
+                {{ form.email }}
+            {% endif %}
+            {{ form.to }}
+            {{ form.comments }}
+            <input type="submit" value="Отправить" class="btn btn-primary mb-3 btn-lg">
+        </form>
+    {% endif %}
+{% endblock %}

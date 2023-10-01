@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Комментарий оставлен{% endblock %}
+
+{% block content %}
+    {% if comment %}
+        <h3>Комментарий добавлен</h3>
+    
+        <a href="{{ post.get_absolute_url }}">
+            <div class="mt-2">
+                <input type="submit" class="btn btn-primary mb-3" value="Назад к посту">
+            </div>
+        </a>
+    {% else %}
+        {% include 'blog/post/includes/comment_form.html'%}
+    {% endif %}
+{% endblock %}
