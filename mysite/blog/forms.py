@@ -10,12 +10,6 @@ class EmailPostForm(forms.Form):
                                widget=forms.Textarea(attrs={"class": "form-control mb-1", 'placeholder': 'Текст'}))
 
 class CommentForm(forms.ModelForm):
-    # name = forms.CharField(required=True, widget=forms.TextInput(attrs={
-    #     'class': 'form-control', 'placeholder': "Имя"
-    # }), label='Имя')
-    # email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
-    #     'class': 'form-control', 'placeholder': 'Email'
-    # }), label='Email')
 
     body = forms.CharField(required=True,
                            widget=SummernoteWidget(attrs={"class": "form-control", 'summernote': {'width': '100%', 'height': '300px'}}),
